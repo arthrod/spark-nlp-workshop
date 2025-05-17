@@ -2,6 +2,7 @@
 import pandas as pd
 import xml.etree.ElementTree as ET
 from lxml import etree
+import lxml.etree
 
 def hocr_to_dataframe(hocr):
 
@@ -9,7 +10,7 @@ def hocr_to_dataframe(hocr):
 
         f.write(str(hocr))
 
-    doc = etree.parse("demo_hocr_content.xml")
+    doc = etree.parse("demo_hocr_content.xml", parser=lxml.etree.XMLParser(resolve_entities=False))
 
     words    = []
     wordConf = []

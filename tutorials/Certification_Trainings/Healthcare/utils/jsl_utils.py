@@ -5,11 +5,12 @@ import matplotlib.pyplot as plt
 from IPython.display import Image 
 from PIL import Image, ImageFont, ImageDraw, ImageEnhance
 import re
+import lxml.etree
 
 def hocr_to_dataframe(hocr):
     with open ("demo_hocr_content.xml",'w',encoding='utf-8') as f:
         f.write(str(hocr))
-    doc = etree.parse("demo_hocr_content.xml")
+    doc = etree.parse("demo_hocr_content.xml", parser=lxml.etree.XMLParser(resolve_entities=False))
     words    = []
     wordConf = []
     fonts    = []

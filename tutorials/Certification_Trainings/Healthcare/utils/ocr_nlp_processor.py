@@ -19,6 +19,7 @@ import re
 import os
 import random
 from collections import OrderedDict
+import lxml.etree
 
 label2color = dict()
 colors = ['aqua', 'aquamarine', 'black', 'blanchedalmond', 'blue', 'blueviolet', 'brown', 'burlywood', 'cadetblue', 'chartreuse', 'chocolate', 'cornflowerblue', 'crimson', 'darkblue', 'darkcyan', 'darkgoldenrod', 'darkgray', 'darkgreen', 'darkkhaki', 'darkmagenta',
@@ -75,7 +76,7 @@ def OCR_pipeline(spark, pdf_path, ner_pipeline, chunk_col="ner_chunk") :
 def hocr_to_dataframe(hocr):
     with open ("hocr_content.xml",'w',encoding='utf-8') as f:
         f.write(str(hocr))
-    doc = etree.parse("hocr_content.xml")
+    doc = etree.parse("hocr_content.xml", parser=lxml.etree.XMLParser(resolve_entities=False))
     words    = []
     wordConf = []
     fonts    = []
