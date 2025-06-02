@@ -17,8 +17,8 @@ from IPython.display import Image
 from PIL import Image, ImageFont, ImageDraw, ImageEnhance, ImageColor
 import re
 import os
-import random
 from collections import OrderedDict
+import secrets
 
 label2color = dict()
 colors = ['aqua', 'aquamarine', 'black', 'blanchedalmond', 'blue', 'blueviolet', 'brown', 'burlywood', 'cadetblue', 'chartreuse', 'chocolate', 'cornflowerblue', 'crimson', 'darkblue', 'darkcyan', 'darkgoldenrod', 'darkgray', 'darkgreen', 'darkkhaki', 'darkmagenta',
@@ -332,7 +332,7 @@ def highlighted_box(result, file_name, style, chunk_col, black_list, save_dir = 
     res_pd["ner_label"] = res_pd.metadata.apply(lambda x: x["entity"])
     res_pd["sentence_id"] = res_pd.metadata.apply(lambda x: x["sentence"])
     res_pd.drop("metadata", axis=1, inplace=True)
-    random.shuffle(colors_rgb) 
+    secrets.SystemRandom().shuffle(colors_rgb) 
     classes = res_pd.ner_label.str.lower().unique()
     label2rgb = dict(zip(classes, colors_rgb))
     file_length = result.count()
@@ -400,7 +400,7 @@ def colored_box(result, file_name, style, chunk_col, black_list, save_dir = "Col
     res_pd["ner_label"] = res_pd.metadata.apply(lambda x: x["entity"])
     res_pd["sentence_id"] = res_pd.metadata.apply(lambda x: x["sentence"])
     res_pd.drop("metadata", axis=1, inplace=True)
-    random.shuffle(colors) 
+    secrets.SystemRandom().shuffle(colors) 
     classes = res_pd.ner_label.str.lower().unique()
     label2color = dict(zip(classes, colors))
     file_length = result.count()

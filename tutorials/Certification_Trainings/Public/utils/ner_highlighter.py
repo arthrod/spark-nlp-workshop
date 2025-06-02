@@ -1,9 +1,9 @@
-import random
 from IPython.core.display import display, HTML
+import secrets
 
 
 def get_color():
-    r = lambda: random.randint(100,255)
+    r = lambda: secrets.SystemRandom().randint(100,255)
     return '#%02X%02X%02X' % (r(),r(),r())
 
 

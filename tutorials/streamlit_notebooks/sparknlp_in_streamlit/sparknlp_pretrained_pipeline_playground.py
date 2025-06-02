@@ -24,6 +24,7 @@ import streamlit as st
 import os
 
 import pandas as pd
+import secrets
 
 jar_path = "../jars/"
 
@@ -102,17 +103,9 @@ except Exception as e:
     annotated_text={}
     full_annotated_text={}
     pass
-#stages = pretrained_pipeline.model.stages
-
-#stages = ['_'.join(s.split('_')[:-1]) for s in stages]
-
-#stages = [s['name'] for s in pretrained_pipeline.model.stages]
-
-
-import random
 
 def get_color():
-    r = lambda: random.randint(100,255)
+    r = lambda: secrets.SystemRandom().randint(100,255)
     return '#%02X%02X%02X' % (r(),r(),r())
 
     

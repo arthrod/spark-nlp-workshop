@@ -3,9 +3,9 @@ import numpy as np
 import os
 import tensorflow as tf
 import string
-import random
 import math
 import sys
+import secrets
 
 class DatasetEncoder:
     # Each sentence must be array of tuple (word, tag)
@@ -16,7 +16,7 @@ class DatasetEncoder:
         self.piece_tag = piece_tag
         
     def shuffle(self):
-        random.shuffle(self.sentences)
+        secrets.SystemRandom().shuffle(self.sentences)
     
     @staticmethod
     def normalize(word):

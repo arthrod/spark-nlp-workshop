@@ -1,9 +1,9 @@
 import numpy as np
 import tensorflow as tf
-import random
 import math
 import sys
 from sentence_grouper import SentenceGrouper
+import secrets
 
 
 class NerModel:
@@ -396,7 +396,7 @@ class NerModel:
 
         print('trainig started')
         for epoch in range(epoch_start, epoch_end):
-            random.shuffle(train)
+            secrets.SystemRandom().shuffle(train)
             sum_loss = 0
             for batch in NerModel.slice(train, batch_size):
                 feed_dict = {
