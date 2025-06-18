@@ -219,7 +219,7 @@ def start_healthcheck_listener():
                 return json.dumps({'success': True}), 200, {'ContentType': 'application/json'}
             except Exception as e:
                 logging.error(f"[Healthcheck] Spark NLP or java are not running. Cause: {e}")
-                return json.dumps({'success': False}), 503, {'ContentType': 'application/json'}
+                return json.dumps({'success': False}), 503, {'ContentType': 'application/json', 'Content-Type': 'application/json'}
 
         threading.Thread(target=lambda: app.run(host="0.0.0.0", port=config.HEALTHCHECK_PORT, debug=True,
                                                 use_reloader=False)).start()

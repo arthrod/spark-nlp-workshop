@@ -216,7 +216,7 @@ class FlaskManager:
                 return json.dumps({'success': True}), 200, {'ContentType': 'application/json'}
             except Exception as e:
                 logging.error(f"[Healthcheck] Spark NLP or java are not running. Cause: {e}")
-                return json.dumps({'success': False}), 503, {'ContentType': 'application/json'}
+                return json.dumps({'success': False}), 503, {'ContentType': 'application/json', 'Content-Type': 'application/json'}
 
         # self.app.run(host="0.0.0.0", port=config.FLASK_PORT, debug=True, use_reloader=True)
         threading.Thread(target=lambda: self.app.run(host="0.0.0.0", port=config.FLASK_PORT, debug=True,
