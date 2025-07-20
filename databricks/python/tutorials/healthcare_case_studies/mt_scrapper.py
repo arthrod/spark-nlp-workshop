@@ -2,6 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 import os
 import re
+from security import safe_requests
 
 def get_mt_samples(medical_speciality="", path = ".", n = None):
 
@@ -90,7 +91,7 @@ def get_mt_samples(medical_speciality="", path = ".", n = None):
         url = f"https://mtsamples.com/site/pages/sample.asp?type={sample_types_map[medical_speciality]['type']}&sample={sample_url}"
         #print(url)
         
-        page = requests.get(url)
+        page = safe_requests.get(url)
         mt_soup_speciality = BeautifulSoup(page.text, 'html.parser')
 
         mt_hilightBold_text = mt_soup_speciality.find(class_='hilightBold').text.replace('(adsbygoogle = window.adsbygoogle || []).push({});', ' ')
