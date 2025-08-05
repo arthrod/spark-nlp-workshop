@@ -47,7 +47,7 @@ class ChatGPTManager:
                 "model": "text-davinci-002-render"
         }
         jdata = json.dumps(data)
-        res = requests.post(endpoint, data=jdata, headers=headers)
+        res = requests.post(endpoint, data=jdata, headers=headers, timeout=60)
         try:
             answer = "\n".join(json.loads(res.text.split('data: ')[-2])['message']['content']['parts'])
         except Exception as e:
