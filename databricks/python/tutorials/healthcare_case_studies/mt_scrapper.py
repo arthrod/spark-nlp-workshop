@@ -63,7 +63,7 @@ def get_mt_samples(medical_speciality="", path = ".", n = None):
     """
     
     URL = "https://mtsamples.com/site/pages/sitemap.asp"
-    page = requests.get(URL)
+    page = requests.get(URL, timeout=60)
     mt_soup = BeautifulSoup(page.text, 'html.parser')
     sample_types_map = {}
     type_samples = {}
@@ -90,7 +90,7 @@ def get_mt_samples(medical_speciality="", path = ".", n = None):
         url = f"https://mtsamples.com/site/pages/sample.asp?type={sample_types_map[medical_speciality]['type']}&sample={sample_url}"
         #print(url)
         
-        page = requests.get(url)
+        page = requests.get(url, timeout=60)
         mt_soup_speciality = BeautifulSoup(page.text, 'html.parser')
 
         mt_hilightBold_text = mt_soup_speciality.find(class_='hilightBold').text.replace('(adsbygoogle = window.adsbygoogle || []).push({});', ' ')
