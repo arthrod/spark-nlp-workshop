@@ -2,7 +2,7 @@ johnsnowlabs==4.2.3
 nbformat
 streamlit==1.30.0
 Flask==2.2.5
-pyspark==3.2.2
+pyspark==3.4.4
 #rich==12.6.0
 #pyreadline
 #git+https://github.com/mmabrouk/chatgpt-wrapper
