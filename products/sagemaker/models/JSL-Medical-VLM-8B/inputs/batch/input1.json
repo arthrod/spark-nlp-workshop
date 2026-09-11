@@ -1,0 +1,14 @@
+{
+    "model": "/opt/ml/model",
+    "prompt": [
+        "<|im_start|>system\nYou are an expert medical AI assistant.<|im_end|>\n<|im_start|>user\nHow can I maintain good kidney health?<|im_end|>\n<|im_start|>assistant\n",
+        "<|im_start|>system\nYou are an expert medical AI assistant.<|im_end|>\n<|im_start|>user\nWhat are the symptoms of high blood pressure?<|im_end|>\n<|im_start|>assistant\n"
+    ],
+    "temperature": 0.6,
+    "top_p": 0.95,
+    "max_tokens": 4096,
+    "presence_penalty": 0.0,
+    "stop": [
+        "<|im_end|>"
+    ]
+}
